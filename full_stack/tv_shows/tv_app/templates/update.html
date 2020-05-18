@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Edit Show: {{ update_show.title }}</h1>
+        {% if messages %}
+        <ul class='messages'>
+            {% for message in messages %}
+                <li {% if message.tags %} class='{{ message.tags }}' {% endif %} >{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action='/update/{{update_show.id}}' method="POST">
+            {% csrf_token %}
+            Edit Title: <input type='text' name='title' value='{{ update_show.title }}'>
+            Edit Network: <input type='text' name='net' value='{{ update_show.network }}'>
+            Edit Release Date: <input type='date' name='release' value='2020-03-09'>
+            Edit Description: <input type='text' name='desc' value='{{ update_show.description }}'>
+            <input type='submit' value='Update'>
+        </form>
+        <a href='/shows'>Go Back</a>
+    </body>
+</html>

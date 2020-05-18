@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Registration</title>
+        <link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        {% if messages %}
+        <ul class='messages'>
+            {% for message in messages %}
+                <li> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class = 'register_field'>
+            <h1>Registration</h1>
+            <form action='/register' method='post'>
+                {% csrf_token %}
+                <label for='reg_firstname'>First Name:</label>
+                <input type='text' name='firstname'><br>
+                <label for='reg_lastname'>Last Name:</label>
+                <input type='text' name='lastname'><br>
+                <label for='reg_email'>Email: </label>
+                <input type='text' name='email'><br>
+                <label for='reg_password'>Password: </label>
+                <input type='text' name='password'><br>
+                <label for='reg_confirm'>Confirm Password: </label>
+                <input type='text' name='confirm'><br><br>
+                <input type='submit' name='submit' value='Register'>
+            </form>
+        </div>
+        <div class='login_field'>
+            <h1>Login</h1>
+            <form action='/login' method='post'>
+                {% csrf_token %}
+                Email: <input type='text' name='email'>
+                Password: <input type='text' name='password' >
+                <input type='submit' name='submit' value='Login'>
+            </form>
+        </div>
+    </body>
+</html>

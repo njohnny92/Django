@@ -1,0 +1,22 @@
+.register_field {
+    display: inline-block;
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.register_field form {
+    margin: 10px;
+    text-align: left;
+}
+
+.register_field input {
+    text-align: right;
+}
+
+
+.login_field {
+    display: inline-block;
+    border: 1px solid black;
+
+}

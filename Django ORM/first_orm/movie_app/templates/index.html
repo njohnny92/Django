@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Index Template</h1>
+        <p> I am passing down this in context: {{all_the_movies}}</p>
+        {% for movie in all_the_movies %}
+            <li>Title: {{movie.title}} | Description: {{movie.description}} | Release Date: {{movie.release_date}} | Duration: {{movie.duration}}</li>
+        {% endfor %}
+    </body>
+</html>

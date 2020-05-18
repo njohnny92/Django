@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Author List</h1>
+        <h1>{{authors.first_name}}</h1>
+        <ul>
+        {% for author in authors %}
+            <li>{{author.first_name}} {{author.last_name}}
+            <ul>
+                <!-- looping through each author's books! -->
+                {% for book in author.books.all %}
+                    <li><em>{{book.title}}</em></li>
+                {% endfor %}
+            </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{one_book.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Book ID: {{one_book.id}}</h6>
+                <p class="card-text">Description: {{one_book.description}}</p>
+                <p class="card-text">Authors:
+                    <ul style='list-style-type:disc;'>
+                        {% for author in books_authors %}
+                            <li>{{author.first_name}} {{author.last_name}}</li>
+                        {% endfor %}
+                    </ul>
+                </p>
+                <form action='/add_author_to_book/{{one_book.id}}' method="POST">
+                    {% csrf_token %}
+                    <label for='author-option'>Choose an Author: </label>
+                    <select id='author-option' name='author'>
+                        {% for author in avaliable_authors %}
+                            <option value='{{author.id}}'>{{author.first_name}} {{author.last_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type='submit' value='Add'>
+                </form>
+                <a href="/" class="card-link">Back</a>
+            </div>
+        </div>
+    </body>
+</html>

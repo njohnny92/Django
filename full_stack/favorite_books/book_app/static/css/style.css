@@ -1,0 +1,19 @@
+.add_book {
+    float:left;
+    border: 1px solid black;
+    text-align: left;
+    margin: 30px;
+    padding: 10px;
+}
+
+.add_book textarea {
+    margin-left: 5px;
+}
+
+.list_books {
+    float: right;
+    text-align: center;
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid black;
+}

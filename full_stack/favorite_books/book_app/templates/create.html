@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% include 'header.html' %}
+    <div class='add_book'>
+        <h1>Add a Favorite Book</h1>
+        <form action='/add_favorite' method='post'>
+            {% csrf_token %}
+            <p>Title: <input type='text' name='title'></p>
+            <p>Description: <textarea type='text' name='desc' cols='21' row='5'></textarea></p>
+            <input type='submit' value='Add' class='btn btn-primary'>
+        </form>
+    </div>
+    <div class='list_books'>
+        <h1>All Books</h1>
+        {% for book in all_books %}
+            <a href='/show/{{book.id}}' class='btn btn-secondary'>{{ book.title }}</a>
+            <p>(added by {{ book.user.first_name }} {{ book.user.last_name }})</p>
+            {% if book.user_likes %}
+                <p>this is one of your favorites!</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock content %}
